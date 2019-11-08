@@ -1,21 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">PlatziSquare</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contactos</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <agm-map [latitude]='lat' [longitude]='lng'>
   <agm-marker [latitude]='lat' [longitude]='lng'></agm-marker>
 </agm-map>
 <hr />
-<ul>
-  <ng-container *ngFor="let place of places">
-    <li *ngIf="place.active">{{place.name}}</li>
-  </ng-container>
-</ul>
-<ul>
-  <ng-container *ngFor="let place of places; let i = index" [ngSwitch]="place.closeness">
-    <a>
-      <li contar_clicks [ngStyle]="{color: (place.active) ? 'black' : 'gray'}" [ngClass]="{number_par: ((i +1) % 2 !== 0)}" [resaltar]="place.plan">
-        {{place.name}} -
-        <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}">Muy cercano</span>
-        <span *ngSwitchCase="2" [ngStyle]="{color: 'black'}">Cercano</span>
-        <span *ngSwitchCase="3" [ngStyle]="{color: 'red'}">Lejano</span>
-      </li>
-    </a>
-  </ng-container>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h2>Places</h2>
+      <ul class="list-group">
+        <ng-container *ngFor="let place of places">
+          <li class="list-group-item" *ngIf="place.active">{{place.name}}</li>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-4">
+      <h2>Destacados</h2>
+    </div>
+  </div>
+</div>
