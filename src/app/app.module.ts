@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DetalleComponent } from './detalle/detalle.component';
 import { PlaceComponent } from './places/places.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { LugaresService } from 'src/Services/lugares.services';
 
 const appRoutes: Routes = [
   {path: '', component: AppComponent},
@@ -32,7 +33,7 @@ const appRoutes: Routes = [
     }),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [LugaresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
