@@ -1,0 +1,14 @@
+<div class="text-white bg-dark">
+  <a routerLink="/places">Places</a> / Contacto
+</div>
+<div class="container">
+  <label for="name">Name:</label>
+  <input type="text" class="form-control" name="name" id="name" />
+  <label for="email">Name:</label>
+  <input type="email" class="form-control" name="email" id="email" />
+  <label for="email">Message:</label>
+  <textarea name="message" class="form-control" id="message" cols="30" rows="10"></textarea>
+  <hr />
+  <a class="btn btn-primary">Send</a>
+  <a class="btn btn-outline-secondary" [routerLink]="['/places']">Cancel</a>
+</div>

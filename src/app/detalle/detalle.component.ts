@@ -16,13 +16,14 @@ export class DetalleComponent {
   place: any = {};
 
   constructor(private route: ActivatedRoute) {
-    console.log(this.route.snapshot.params['id']);
-    console.log(this.route.snapshot.queryParams['action']);
-    this.id = this.route.snapshot.params['id'];
+    console.log(this.route.snapshot.params.id);
+    console.log(this.route.snapshot.queryParams.action);
+    this.id = this.route.snapshot.params.id;
     this.place = this.searchPlace();
   }
 
   searchPlace() {
-    return this.places.filter((place) => { return place.id == this.id })[0] || null;
+    // tslint:disable-next-line: triple-equals
+    return this.places.filter((place) => place.id == this.id)[0] || null;
   }
 }
