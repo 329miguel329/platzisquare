@@ -14,6 +14,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', component: AppComponent},
@@ -21,7 +22,7 @@ const appRoutes: Routes = [
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
   {path: 'create', component: CreateComponent}
-]
+];
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBctyUM2Rn_wqFmpJ8KoGtJv78hi328xLQ',
@@ -50,7 +51,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [LugaresService],
   bootstrap: [AppComponent]
