@@ -14,6 +14,9 @@ export class PlaceComponent {
   constructor(private placeService: LugaresService) {
     placeService.getLugares()
       .valueChanges()
-      .subscribe(places => { this.places = places });
+      .subscribe(places => {
+        console.log(places);
+        this.places = places
+      });
   }
 }
