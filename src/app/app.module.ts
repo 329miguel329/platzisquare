@@ -21,7 +21,7 @@ const appRoutes: Routes = [
   {path: 'places', component: PlaceComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'create', component: CreateComponent}
+  {path: 'create/:id', component: CreateComponent}
 ];
 
 export const firebaseConfig = {

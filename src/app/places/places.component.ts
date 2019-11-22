@@ -8,15 +8,15 @@ import { LugaresService } from 'src/Services/lugares.services';
 export class PlaceComponent {
   title = 'PlatziSquare';
   places = null;
-  lat: number = 4.6852684;
-  lng: number = -74.1605128;
+  lat = 4.6852684;
+  lng = -74.1605128;
 
   constructor(private placeService: LugaresService) {
     placeService.getLugares()
       .valueChanges()
       .subscribe(places => {
         console.log(places);
-        this.places = places
+        this.places = places;
       });
   }
 }
