@@ -13,10 +13,14 @@ export class PlaceComponent {
 
   constructor(private placeService: LugaresService) {
     placeService.getLugares()
-      .valueChanges()
       .subscribe(places => {
+        const that = this;
         console.log(places);
-        this.places = places;
+        that.places = places;
+        that.places = Object.keys(that.places).map((key) => that.places[key]);
+      }, error => {
+        console.log(error);
+        alert('Hay un error intente mas tarde ' + error.statusText);
       });
   }
 }

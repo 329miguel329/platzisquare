@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {map} from 'rxjs/operators'
 
 @Injectable()
 export class LugaresService {
+  API_ENDPOINT = 'https://platzisquare-1573202986487.firebaseio.com';
   places: any = [
     {id: 1, plan: 'Pagado', closeness: 1, distance: 1, name: 'Carros', active: true, description: 'Description of place'},
     {id: 2, plan: 'Free', closeness: 2, distance: 1.8, name: 'Motos', active: false, description: 'Description of place'},
@@ -14,7 +16,12 @@ export class LugaresService {
    * getLugares
    */
   public getLugares() {
-    return this.afDB.list('places/');
+    // return this.afDB.list('places/');
+    return this.http.get(this.API_ENDPOINT + '/.json')
+      .pipe(map((result) => {
+        // tslint:disable-next-line:no-string-literal
+        return Object.values(result['places']);
+      }));
   }
   public searchPlace(placeId: string) {
     // return this.places.filter((place) => place.id == id)[0] || null;
@@ -24,7 +31,9 @@ export class LugaresService {
    * savePlace
    */
   public savePlace(place: { id: string; }) {
-    this.afDB.database.ref('places/' + place.id).set(place);
+    // this.afDB.database.ref('places/' + place.id).set(place);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post(this.API_ENDPOINT + '/places.json', place, {headers}).subscribe();
   }
 
   public updatePlace(place: { id: string; }) {

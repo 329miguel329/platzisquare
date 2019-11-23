@@ -30,7 +30,8 @@ export class CreateComponent {
           alert('Updated successfully');
         } else {
           this.place.id = Date.now();
-          this.placeService.savePlace(this.place);
+          result = this.placeService.savePlace(this.place);
+          console.log(result);
           alert('Saved successfully');
         }
         this.place = {};
