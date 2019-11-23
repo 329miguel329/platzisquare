@@ -1,23 +1,24 @@
 <agm-map [latitude]='lat' [longitude]='lng'>
-    <agm-marker [latitude]='lat' [longitude]='lng'></agm-marker>
-  </agm-map>
-  <hr />
-  <div class="container">
-    <div class="row">
-      <div class="col-8">
-        <h2>Places</h2>
-        <a class="btn btn-primary" [routerLink]="['/create/new']" routerLinkActive="router-link-active">Create new store</a>
-        <ul class="list-group">
-          <ng-container *ngFor="let place of places">
-            <a routerLink="/create/{{place.id}}">
-              <!-- <li class="list-group-item" *ngIf="place.active">{{place.name}}</li> -->
-              <li class="list-group-item">{{place.name}}</li>
-            </a>
-          </ng-container>
-        </ul>
-      </div>
-      <div class="col-4">
-        <h2>Destacados</h2>
-      </div>
+  <agm-marker *ngFor="let place of places" [latitude]='place.lat' [longitude]='place.lng'></agm-marker>
+</agm-map>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h2>Places</h2>
+      <a class="btn btn-primary" [routerLink]="['/create/new']" routerLinkActive="router-link-active">Create new
+        store</a>
+      <ul class="list-group">
+        <ng-container *ngFor="let place of places">
+          <a routerLink="/create/{{place.id}}">
+            <!-- <li class="list-group-item" *ngIf="place.active">{{place.name}}</li> -->
+            <li class="list-group-item">{{place.name}}</li>
+          </a>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-4">
+      <h2>Destacados</h2>
     </div>
   </div>
+</div>
