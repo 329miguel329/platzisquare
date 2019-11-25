@@ -10,10 +10,16 @@
         store</a>
       <ul class="list-group">
         <ng-container *ngFor="let place of places">
-          <a routerLink="/create/{{place.id}}">
-            <!-- <li class="list-group-item" *ngIf="place.active">{{place.name}}</li> -->
-            <li class="list-group-item">{{place.name}}</li>
-          </a>
+          <!-- <li class="list-group-item" *ngIf="place.active">{{place.name}}</li> -->
+          <li class="list-group-item">
+              <a routerLink="/create/{{place.id}}">
+                {{place.name}}
+              </a>
+              <br />
+              <small>Creado: {{place.id | date:'medium'}}</small>
+              <br />
+              <small>Description: {{place.description}}</small>
+            </li>
         </ng-container>
       </ul>
     </div>
