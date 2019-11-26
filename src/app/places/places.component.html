@@ -2,9 +2,6 @@
   <agm-marker *ngFor="let place of places" [latitude]='place.lat' [longitude]='place.lng'></agm-marker>
 </agm-map>
 <hr />
-<div id="cuadrado" [@Container]="state" (@Container.start)="animationInitialized($event)" (@Container.done)="animationFinished($event)"></div>
-<a class="btn btn-default" (click)="animate()">Animate</a>
-<hr />
 <div class="container">
   <div class="row">
     <div class="col-8">
@@ -26,8 +23,18 @@
         </ng-container>
       </ul>
     </div>
-    <div class="col-4">
+    <div class="col-4" [@Container]='state'>
       <h2>Destacados</h2>
+      <ng-container *ngFor="let place of places">
+        <!-- <li class="list-group-item" *ngIf="place.active">{{place.name}}</li> -->
+        <div class="bg-warning padding" *ngIf="place.plan == 'Payroll'">
+            <a routerLink="/create/{{place.id}}">
+              {{place.name}}
+            </a>
+            <br />
+            <small>Description: {{place.description}}</small>
+          </div>
+      </ng-container>
     </div>
   </div>
 </div>

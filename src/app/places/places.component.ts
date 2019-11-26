@@ -8,14 +8,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('Container', [
       state('initial', style({
-        opacity: 0,
-        backgroundColor: 'green',
-        transform: 'rotate3d(0,0,0,0deg)'
+        opacity: 0
       })),
       state('finish', style({
-        opacity: 1,
-        backgroundColor: 'yellow',
-        transform: 'rotate3d(5,10,20,30deg)'
+        opacity: 1
       })),
       transition('initial => finish', animate(1000)),
       transition('finish => initial', animate(1000))
@@ -24,7 +20,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class PlaceComponent {
   title = 'PlatziSquare';
-  state = 'finish';
+  state = 'initial';
   places = null;
   lat = 4.6852684;
   lng = -74.1605128;
@@ -36,6 +32,7 @@ export class PlaceComponent {
         console.log(places);
         that.places = places;
         that.places = Object.keys(that.places).map((key) => that.places[key]);
+        this.state = 'finish';
       }, error => {
         console.log(error);
         alert('Hay un error intente mas tarde ' + error.statusText);
