@@ -46,7 +46,7 @@ export class PlaceComponent {
     console.log('Init');
     console.log(e);
   }
-  animationFinished(e: any){
+  animationFinished(e: any) {
     console.log('Finish');
     console.log(e);
   }
