@@ -8,7 +8,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { DetalleComponent } from './detalle/detalle.component';
 import { PlaceComponent } from './places/places.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { LugaresService } from 'src/Services/lugares.services';
+import { AuthorizationService } from 'src/Services/auth.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -22,7 +25,9 @@ const appRoutes: Routes = [
   {path: 'places', component: PlaceComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'create/:id', component: CreateComponent}
+  {path: 'create/:id', component: CreateComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 export const firebaseConfig = {
@@ -41,6 +46,8 @@ export const firebaseConfig = {
     PlaceComponent,
     DetalleComponent,
     ContactoComponent,
+    LoginComponent,
+    RegisterComponent,
     CreateComponent
   ],
   imports: [
@@ -56,7 +63,7 @@ export const firebaseConfig = {
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [LugaresService],
+  providers: [LugaresService, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
