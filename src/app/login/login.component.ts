@@ -6,7 +6,11 @@ import { AuthorizationService } from 'src/Services/auth.service';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
+  oLogin: any = {};
   constructor(private authorizationService: AuthorizationService) {
-    this.authorizationService.login('email', 'password');
+  }
+
+  login() {
+    this.authorizationService.login(this.oLogin.email, this.oLogin.password);
   }
 }

@@ -19,13 +19,14 @@ import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Security } from 'src/Services/security.service';
 
 const appRoutes: Routes = [
   {path: '', component: AppComponent},
   {path: 'places', component: PlaceComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'create/:id', component: CreateComponent},
+  {path: 'create/:id', component: CreateComponent, canActivate: [Security]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}
 ];
@@ -63,7 +64,7 @@ export const firebaseConfig = {
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [LugaresService, AuthorizationService],
+  providers: [LugaresService, AuthorizationService, Security],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

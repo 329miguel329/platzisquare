@@ -6,7 +6,11 @@ import { AuthorizationService } from 'src/Services/auth.service';
   templateUrl: './register.component.html'
 })
 export class RegisterComponent {
+  oRegister: any = {};
   constructor(private authorizationService: AuthorizationService) {
-    this.authorizationService.register('email', 'password');
+  }
+
+  register() {
+    this.authorizationService.register(this.oRegister.email, this.oRegister.password);
   }
 }
