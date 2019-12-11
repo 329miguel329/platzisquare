@@ -19,6 +19,15 @@
   <input type="text" class="form-control" name="plan" id="plan" [(ngModel)]="place.plan" />
   <br />
   <h3>Coordenates</h3>
+  <div class="well">
+    <form>
+      <h3>Search address</h3>
+      <input type="text" class="form-control" [formControl]='searchField' />
+    </form>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let result of results$ | async" >{{result.formatted_address}}</li>
+    </ul>
+  </div>
   <label for="name">Address:</label>
   <input type="text" class="form-control" name="address" id="address" [(ngModel)]="place.address" />
   <br />
